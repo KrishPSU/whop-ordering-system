@@ -1,0 +1,70 @@
+.toppings-section {
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fefefe;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.toppings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.topping-group {
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+}
+
+.topping-group-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.topping-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 6px 12px;
+}
+
+.topping-option {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 6px;
+}
+
+
+
+.topping-group {
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+}
+
+.topping-group-header {
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  color: #333;
+  padding: 4px 0;
+  text-align: left;
+  width: 100%;
+  transition: color 0.2s;
+}
+
+.topping-group-header:hover {
+  color: #007bff;
+}
+
+.topping-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 6px 12px;
+  margin-top: 8px;
+}

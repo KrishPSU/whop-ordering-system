@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Online | Westford House of Pizza</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+  <script defer src="./js/main.js"></script>
+  <script defer src="./js/modal.js"></script>
+  <script defer src="./js/cart.js"></script>
+  <script defer src="./js/cart-scroll.js"></script>
+  <script defer src="./js/toppings.js"></script>
+  <script defer src="./js/submit.js"></script>
+
+  <link rel="stylesheet" href="./css/logo.css" />
+  <link rel="stylesheet" href="./css/navbar.css" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/modal.css" />
+  <link rel="stylesheet" href="./css/toppings.css" />
+  <!-- <link rel="stylesheet" href="./css/cart.css" /> -->
+
+</head>
+<body>
+
+  <div class="menu-wrapper">
+
+    <header class="navbar">
+      <img src="/images/whop-logo.png" alt="Westford House of Pizza Logo" class="logo-img" />
+      <select id="categorySelect">
+        <option value="all">All Categories</option>
+      </select>
+      <input type="text" id="searchInput" autocomplete="off" placeholder="Search items...">
+      <button id="viewOrderBtn">
+        🛒 View Order
+        <span id="cartCount">0</span>
+      </button>
+    </header>
+    
+    <div id="orderDrawer">
+      <div class="order_drawer_top">
+        <h2>Your Order</h2>
+        <button id="closeDrawer">Close</button>
+      </div>
+
+      <div class="orderListContainer">
+        <div class="top-shadow"></div>
+
+        <div id="orderListWrapper">
+          <ul id="orderList"></ul>
+        </div>
+
+        <div class="bottom-shadow"></div>
+      </div>
+
+      <div class="cart_bottom">
+        <div id="cartTotalContainer">
+          <div class="client-info">
+            <input id="client-name" type="text" placeholder="Your Name" />
+            <input id="client-phone-number" type="tel" placeholder="Phone Number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" />
+          </div>
+          <div class="total_wrapper">
+            <p>Subtotal:<span id="subtotal">$0.00</span></p>
+            <p>Tax (6.25%):<span id="tax">$0.00</span></p>
+            <strong><p>Total:<span id="total">$0.00</span></p></strong>
+          </div>
+        </div>
+        <button id="submit_order">Submit Order</button>
+      </div>
+    </div>
+
+    
+
+    <div class="menu-container" id="menuContainer"></div>
+
+    <div id="addToOrderModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <div id="modalItemInfo"></div>
+        <div id="modalPriceButtons"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="cartAlert">Item added to cart ✅</div>
+
+</body>
+</html>
