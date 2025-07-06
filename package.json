@@ -2,9 +2,9 @@
   "name": "whop",
   "version": "1.0.0",
   "description": "",
-  "main": "electron.js",
+  "main": "index.js",
   "scripts": {
-    "start": "electron .",
+    "start": "node index.js",
     "devStart": "nodemon index.js",
     "scrape": "node scrapeMenu.js",
     "server": "node index.js"
