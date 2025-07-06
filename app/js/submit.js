@@ -1,3 +1,36 @@
+// Custom Alert Function
+function showCustomAlert(message, type = 'success', duration = 5000) {
+  // Remove any existing alerts
+  const existingAlerts = document.querySelectorAll('.custom-alert');
+  existingAlerts.forEach(alert => alert.remove());
+
+  // Create alert element
+  const alert = document.createElement('div');
+  alert.className = `custom-alert ${type}`;
+  
+  alert.innerHTML = `
+    <div class="alert-content">${message}</div>
+    <button class="alert-close" onclick="this.parentElement.remove()">&times;</button>
+  `;
+
+  // Add to page
+  document.body.appendChild(alert);
+
+  // Auto remove after duration
+  setTimeout(() => {
+    if (alert.parentElement) {
+      alert.classList.add('hiding');
+      setTimeout(() => {
+        if (alert.parentElement) {
+          alert.remove();
+        }
+      }, 300);
+    }
+  }, duration);
+
+  return alert;
+}
+
 const submit_order_btn = document.getElementById('submit_order');
 const client_name_input = document.getElementById('client-name');
 const client_phone_number_input = document.getElementById('client-phone-number');
@@ -76,7 +109,7 @@ async function submitOrder(orderData) {
 
     if (response.status === 201 || response.status === 200) {
       console.log('Order submitted:', response.data);
-      alert('Your order has been placed successfully!');
+      showCustomAlert('Your order has been placed successfully!', 'success');
 
       cart = [];
       renderCart();
@@ -87,15 +120,15 @@ async function submitOrder(orderData) {
 
     } else {
       console.warn('Unexpected response:', response);
-      alert('Something went wrong. Please try again.');
+      showCustomAlert('Something went wrong. Please try again.', 'warning');
     }
   } catch (error) {
     if (error.response) {
       console.error('Server error:', error.response.data);
-      alert(`Server error: ${error.response.data.message || 'Unable to submit order.'}`);
+      showCustomAlert(`Server error: ${error.response.data.message || 'Unable to submit order.'}`, 'error');
     } else {
       console.error('Network error:', error.message);
-      alert('Network error. Please check your internet connection.');
+      showCustomAlert('Network error. Please check your internet connection.', 'error');
     }
   }
 }
