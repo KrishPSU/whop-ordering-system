@@ -19,3 +19,4 @@
 4.2 git diff --cached // shows the diff of committed files only
 4.3 git diff -- no-ext-diff // does not pop up diff tool
 
+
