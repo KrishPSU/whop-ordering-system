@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fullscreen/app mode for iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="WHOP Admin">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- App icon for iOS (must be 180x180 PNG) -->
+  <link rel="apple-touch-icon" href="/images/whop-icon-180.png">
+
   <title>Order Online | Westford House of Pizza</title>
   
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -21,6 +30,8 @@
   <link rel="stylesheet" href="./css/modal.css" />
   <link rel="stylesheet" href="./css/toppings.css" />
   <!-- <link rel="stylesheet" href="./css/cart.css" /> -->
+
+  <link rel="manifest" href="/manifest.json">
 
 </head>
 <body>
