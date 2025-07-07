@@ -98,5 +98,48 @@
 
   <div id="cartAlert">Item added to cart ✅</div>
 
+
+  <div id="pwa-install-popup" style="display:none; position: fixed; bottom: 24px; left: 0; right: 0; margin: auto; max-width: 360px; z-index: 9999; background: #fff; border-radius: 18px; box-shadow: 0 6px 18px rgba(0,0,0,0.18); padding: 20px; text-align: center; font-family: system-ui, sans-serif;">
+    <div id="pwa-instructions" style="margin-bottom: 12px; font-size: 1rem; color: #333;"></div>
+    <button onclick="document.getElementById('pwa-install-popup').style.display='none'; localStorage.setItem('hidePwaPopup', '1');" style="background: #d32f2f; color: #fff; border: none; padding: 8px 18px; border-radius: 9px; font-size: 1rem; cursor: pointer;">Close</button>
+  </div>
+
+  <script>
+    (function() {
+      // Detect if the popup should be shown
+      if (localStorage.getItem('hidePwaPopup') === '1') return;
+
+      const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      const isAndroid = /android/i.test(navigator.userAgent);
+
+      function isInStandaloneMode() {
+        return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone === true);
+      }
+
+      let instructions = "";
+
+      if (isIos && isSafari && !isInStandaloneMode()) {
+        instructions = `
+          <strong>Install this app:</strong><br>
+          Tap <span style="font-size:1.2em;">&#x1f5d2;</span> <b>Share</b> and then<br>
+          <b>Add to Home Screen</b>.
+        `;
+      } else if (isAndroid && !isInStandaloneMode()) {
+        instructions = `
+          <strong>Install this app:</strong><br>
+          Tap <span style="font-size:1.2em;">&#x22ee;</span> (3 dots) in the top-right and<br>
+          <b>Add to Home screen</b>.
+        `;
+      }
+
+      if (instructions) {
+        document.getElementById('pwa-instructions').innerHTML = instructions;
+        document.getElementById('pwa-install-popup').style.display = 'block';
+      }
+    })();
+  </script>
+
+
 </body>
 </html>
