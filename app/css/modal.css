@@ -26,7 +26,7 @@
   max-width: 410px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 1.5px 8px 0 rgba(44, 62, 80, 0.10);
   position: relative;
-  animation: fadeIn 0.35s cubic-bezier(0.4,0,0.2,1);
+  animation: fadeIn 0.45s cubic-bezier(0.4,0,0.2,1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
 }

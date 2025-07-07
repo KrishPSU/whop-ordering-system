@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Fullscreen/app mode for iOS -->
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="WHOP Admin">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -23,13 +24,14 @@
   <script defer src="./js/cart-scroll.js"></script>
   <script defer src="./js/toppings.js"></script>
   <script defer src="./js/submit.js"></script>
+  <script defer src="./js/download-steps.js"></script>
 
   <link rel="stylesheet" href="./css/logo.css" />
   <link rel="stylesheet" href="./css/navbar.css" />
   <link rel="stylesheet" href="./css/main.css" />
   <link rel="stylesheet" href="./css/modal.css" />
   <link rel="stylesheet" href="./css/toppings.css" />
-  <!-- <link rel="stylesheet" href="./css/cart.css" /> -->
+  <link rel="stylesheet" href="./css/download-steps.css" />
 
   <link rel="manifest" href="/manifest.json">
 
@@ -99,67 +101,24 @@
   <div id="cartAlert">Item added to cart ✅</div>
 
 
-  <div id="pwa-install-popup" style="display:none; position: fixed; left: 0; right: 0; bottom: 32px; margin: auto; max-width: 340px; z-index: 10000; background: #fff; border-radius: 1.2em; box-shadow: 0 8px 32px rgba(0,0,0,0.20); padding: 1.4em 1.2em 1em 1.2em; text-align: center; font-family: system-ui, sans-serif; opacity: 0; transform: translateY(30px); transition: opacity .35s, transform .35s;">
-    <div style="margin-bottom: 1em;">
-      <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-        <circle cx="24" cy="24" r="24" fill="#ffe0b2"/>
-        <path d="M35 18c0-2.76-4.03-5-9-5s-9 2.24-9 5v7c0 2.09 2.04 3.82 5.01 4.61C22.36 30.4 23.16 31 24 31s1.64-.6 2.99-1.39C30.96 28.82 33 27.09 33 25v-7z" fill="#ffb300"/>
-        <ellipse cx="24" cy="19" rx="9" ry="4" fill="#fff59d"/>
-        <circle cx="27" cy="20" r="1.1" fill="#e53935"/>
-        <circle cx="21" cy="19" r="1.1" fill="#e53935"/>
-        <circle cx="24" cy="22" r="1.1" fill="#e53935"/>
-      </svg>
+
+
+
+  <div id="whop-pwa-popup">
+    <div class="whop-pwa-card">
+      <!-- <img src="/icon-180.png" alt="WHOP App Icon" class="whop-pwa-icon" /> -->
+      <div class="whop-pwa-title">🍕 Add WHOP Online Orders to your Home Screen!</div>
+      <div class="whop-pwa-message">
+        For the best ordering experience and instant reordering, install this app:
+        <ul>
+          <li>Tap <b>Share</b> <span style="font-size:1.15em;">&#x1f5d2;</span> at the bottom of Safari</li>
+          <li>Select <b>Add to Home Screen</b></li>
+          <li>Open the WHOP app from your Home Screen!</li>
+        </ul>
+      </div>
+      <button id="whop-pwa-close">Got it</button>
     </div>
-    <div id="pwa-instructions" style="font-size: 1.08em; color: #333; margin-bottom: 1.1em; line-height: 1.6;"></div>
-    <button onclick="closePwaPopup()" style="background: #d32f2f; color: #fff; border: none; padding: 0.68em 1.8em; border-radius: 1em; font-weight: 600; font-size: 1em; box-shadow: 0 2px 8px rgba(211,47,47,.09); cursor: pointer; transition: background .2s;">Dismiss</button>
-  </div>
-
-  <script>
-    function closePwaPopup() {
-      const popup = document.getElementById('pwa-install-popup');
-      popup.style.opacity = 0;
-      popup.style.transform = "translateY(30px)";
-      localStorage.setItem('hidePwaPopup', '1');
-      setTimeout(() => popup.style.display = 'none', 400);
-    }
-    (function() {
-      if (localStorage.getItem('hidePwaPopup') === '1') return;
-
-      const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
-      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-      const isAndroid = /android/i.test(navigator.userAgent);
-
-      function isInStandaloneMode() {
-        return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone === true);
-      }
-
-      let instructions = "";
-      if (isIos && isSafari && !isInStandaloneMode()) {
-        instructions = `
-          <strong>Add this app to your Home Screen</strong><br>
-          Tap <span style="font-size:1.2em;">&#x1f5d2;</span> <b>Share</b> then<br>
-          <b>Add to Home Screen</b>
-        `;
-      } else if (isAndroid && !isInStandaloneMode()) {
-        instructions = `
-          <strong>Add this app to your Home Screen</strong><br>
-          Tap <span style="font-size:1.2em;">&#x22ee;</span> (3 dots) in the top-right then<br>
-          <b>Add to Home screen</b>
-        `;
-      }
-
-      if (instructions) {
-        const popup = document.getElementById('pwa-install-popup');
-        document.getElementById('pwa-instructions').innerHTML = instructions;
-        popup.style.display = 'block';
-        setTimeout(() => {
-          popup.style.opacity = 1;
-          popup.style.transform = "translateY(0)";
-        }, 100);
-      }
-    })();
-  </script>
-
+  </div>  
 
 
 </body>
